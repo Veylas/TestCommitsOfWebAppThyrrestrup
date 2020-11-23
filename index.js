@@ -67,11 +67,12 @@ app.get("/fleet", function (req, res) {
   res.json(jsonString);
 });*/
 
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});
 
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 app.listen(PORT, console.log(`server is starting at ${PORT}`));
